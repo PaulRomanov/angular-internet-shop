@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartPageComponent } from './cart-page/cart-page/cart-page.component';
+import { ProductPageComponent } from './product-page/product-page/product-page.component';
+import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '', component: MainLayoutComponent, children: [
+      {path: '', redirectTo: '/', pathMatch: 'full'},
+      { path: '', component: MainLayoutComponent },
+      { path: 'product/:id', component: ProductPageComponent },
+      { path: 'cart', component: CartPageComponent }
+    ]
+
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
